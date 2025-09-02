@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Botón Explosivo Libre</title>
+<style>
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #111;
+  font-family: sans-serif;
+  position: relative;
+  overflow: hidden; /* opcional para que no aparezcan scrolls */
+}
+
+/* Botón base */
+button {
+  padding: 20px 60px;
+  font-size: 1.5rem;
+  color: #fff;
+  background: linear-gradient(45deg, #ff3cac, #784ba0);
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  z-index: 1;
+}
+
+/* Escala al click */
+button:active {
+  transform: scale(1.15);
+}
+
+/* Partículas */
+.particle {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  background: var(--color);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  animation: explode 0.8s forwards cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+/* Animación explosión con rebote */
+@keyframes explode {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  60% {
+    transform: translate(var(--x), var(--y)) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(var(--x)*0.9), calc(var(--y)*0.9)) scale(0);
+  }
+}
+</style>
+</head>
+<body>
+
+<button onclick="createParticles(event)">¡Hazme explotar!</button>
+
+<script>
+function createParticles(e) {
+  const btn = e.target;
+  const rect = btn.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  for (let i = 0; i < 50; i++) { // Más partículas
+    const particle = document.createElement('span');
+    particle.classList.add('particle');
+
+    const x = (Math.random() - 0.5) * 400 + 'px';
+    const y = (Math.random() - 0.5) * 400 + 'px';
+    const size = (Math.random() * 6 + 4) + 'px';
+    const color = `hsl(${Math.random()*360}, 100%, 60%)`;
+
+    particle.style.setProperty('--x', x);
+    particle.style.setProperty('--y', y);
+    particle.style.setProperty('--size', size);
+    particle.style.setProperty('--color', color);
+
+    particle.style.left = centerX + 'px';
+    particle.style.top = centerY + 'px';
+
+    document.body.appendChild(particle);
+    setTimeout(() => particle.remove(), 800);
+  }
+}
+</script>
+
+</body>
+</html>
