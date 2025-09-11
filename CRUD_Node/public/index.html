@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Agenda - CRUD</title>
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<div class="container">
+<h1>Agenda de Contactos</h1>
+
+
+<section class="form-section">
+<form id="contact-form">
+<input type="hidden" id="contact-id" />
+<input id="name" placeholder="Nombre" required />
+<input id="email" placeholder="Email" required />
+<input id="phone" placeholder="Teléfono" />
+<textarea id="notes" placeholder="Notas"></textarea>
+<button type="submit">Guardar</button>
+<button type="button" id="cancel-edit" style="display:none">Cancelar</button>
+</form>
+</section>
+
+
+<section class="search-section">
+<input id="search" placeholder="Buscar por nombre, email o teléfono" />
+</section>
+
+
+<section class="list-section">
+<table>
+<thead>
+<tr><th>Nombre</th><th>Email</th><th>Tel</th><th>Acciones</th></tr>
+</thead>
+<tbody id="contacts-tbody"></tbody>
+</table>
+</section>
+</div>
+
+
+<script src="/main.js"></script>
+</body>
+</html>

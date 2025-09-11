@@ -1,0 +1,143 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+    background: #f0f2f7;
+    color: #1a1a1a;
+    line-height: 1.5;
+  }
+  
+  /* Contenedor principal */
+  .container {
+    max-width: 900px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  }
+  
+  /* Titulos */
+  h1, h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Formulario */
+  input, textarea {
+    width: 100%;
+    padding: 12px 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: 0.2s;
+  }
+  
+  input:focus, textarea:focus {
+    border-color: #4a90e2;
+    outline: none;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+  }
+  
+  /* Botones */
+  button {
+    padding: 10px 16px;
+    margin: 5px 5px 5px 0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  button.create {
+    background-color: #4a90e2;
+    color: #fff;
+  }
+  
+  button.create:hover {
+    background-color: #357ab8;
+  }
+  
+  button.edit {
+    background-color: #f5a623;
+    color: #fff;
+  }
+  
+  button.edit:hover {
+    background-color: #d4881c;
+  }
+  
+  button.delete {
+    background-color: #e94e3c;
+    color: #fff;
+  }
+  
+  button.delete:hover {
+    background-color: #c0392b;
+  }
+  
+  button.cancel {
+    background-color: #aaa;
+    color: #fff;
+  }
+  
+  button.cancel:hover {
+    background-color: #888;
+  }
+  
+  /* Tabla de contactos */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  
+  th {
+    background-color: #f4f6fb;
+    color: #555;
+  }
+  
+  tr:hover {
+    background-color: #f9f9f9;
+    transition: background 0.2s;
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .container {
+      padding: 20px;
+    }
+  
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+  
+    tr {
+      margin-bottom: 15px;
+    }
+  
+    td {
+      padding-left: 50%;
+      position: relative;
+    }
+  
+    td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 10px;
+      font-weight: bold;
+      color: #555;
+    }
+  }
+  
